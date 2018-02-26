@@ -8,6 +8,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { coffeeApp } from './reducers'
 // import { fetchTodos } from './actions'
 import { createLogger } from 'redux-logger'
+import { intervalCoffee } from './actions'
 
 const loggerMiddleware = createLogger()
 
@@ -25,3 +26,7 @@ ReactDOM.render((
   </Provider>
   ), document.getElementById('root'));
 registerServiceWorker();
+
+setInterval(function () {
+  store.dispatch(intervalCoffee);
+}, 10);

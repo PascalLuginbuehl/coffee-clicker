@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
-import { clickCoffee } from './actions'
+import { clickCoffee, intervalCoffee } from './actions'
 
 
 class App extends Component {
-  constructor() {
-    super()
-    console.log(this)
+  constructor (){
+    super();
   }
 
   render() {
@@ -39,6 +38,9 @@ const mapDispatchToProps = dispatch => {
   return {
     onCoffeeClick: () => {
       dispatch(clickCoffee())
+    },
+    onCoffeeInterval: () => {
+      dispatch(intervalCoffee())
     }
   }
 }
