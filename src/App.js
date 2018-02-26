@@ -6,12 +6,10 @@ import { clickCoffee, intervalCoffee } from './actions'
 
 class App extends Component {
   constructor (){
-    super();
+    super()
   }
 
   render() {
-    console.log(this)
-
     return (
       <div className="App">
         <div>
@@ -30,7 +28,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   console.log(state)
   return {
-    coffeeCounter: state.coffeeCounter
+    coffeeCounter: state.coffeeShop.coffeeCounter
   }
 }
 
