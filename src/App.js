@@ -21,8 +21,7 @@ class App extends Component {
           CoffePicture
         </div>
 
-        <div>
-          <h2>buy shit</h2>
+        <div class='upgrade-item'>
           {this.props.availableUpgrades.map(upgrade => (<div onClick={() => this.props.onBuyCoffee(upgrade.name)} key={upgrade.name}>
             <h3>{upgrade.name}</h3>
             <p>Price {upgrade.price}</p>
