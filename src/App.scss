@@ -1,3 +1,34 @@
+$default-font: 'KG Second Chances Sketch', sans-serif;
+$secondary-font: 'KG Second Chances Solid', sans-serif;
+$default-color: #fff;
+
+@font-face {
+    font-family: 'KG Second Chances Sketch';
+    src: url('css/fonts/KGSecondChancesSketch.woff2') format('woff2'),
+        url('css/fonts/KGSecondChancesSketch.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KG Second Chances Solid';
+    src: url('css/fonts/KGSecondChancesSolid.woff2') format('woff2'),
+        url('css/fonts/KGSecondChancesSolid.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  font-family: $default-font;
+  background-image: url("css/background.jpg");
+  color: $default-color;
+}
+
+h2 {
+  font-family: $secondary-font;
+  font-size: 40pt
+}
+
 .App {
   text-align: center;
 }
