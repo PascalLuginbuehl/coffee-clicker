@@ -14,7 +14,7 @@ class App extends Component {
       <div className="App">
         <div>
           <h2>Counter</h2>
-          <p>{this.props.coffeeCounter}</p>
+          <p>{Math.floor(this.props.coffeeCounter)}</p>
         </div>
 
         <div onClick={this.props.onCoffeeClick}>
@@ -26,6 +26,7 @@ class App extends Component {
           {this.props.availableUpgrades.map(upgrade => (<div onClick={() => this.props.onBuyCoffee(upgrade.name)} key={upgrade.name}>
             <h3>{upgrade.name}</h3>
             <p>Price {upgrade.price}</p>
+            <p>I has {this.props.Upgrades.find(e => e.name === upgrade.name) ? this.props.Upgrades.find(e => e.name === upgrade.name).count : 0}</p>
           </div>))}
         </div>
       </div>

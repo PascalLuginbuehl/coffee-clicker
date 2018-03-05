@@ -25,6 +25,6 @@ export function startCoffeeInterval() {
   return (dispatch) => {
     setInterval(() => {
       dispatch(intervalCoffee())
-    }, 1000)
+    }, 10)
   }
 }

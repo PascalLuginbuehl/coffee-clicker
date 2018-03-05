@@ -6,6 +6,11 @@ const availableUpgrades = [
     name: "Zucker",
     price: 10,
     bonus: 0.1,
+  },
+  {
+    name: "Dicks",
+    price: 100,
+    bonus: 1,
   }
 ]
 
@@ -13,13 +18,13 @@ const calculateCookieThing = (Upgrades) => {
   let amount = 0
 
   Upgrades.forEach(upgrade => {
-    const upgradePrice = availableUpgrades.find(avUpgrade => avUpgrade.name == upgrade.name)
+    const upgradePrice = availableUpgrades.find(avUpgrade => avUpgrade.name === upgrade.name)
     if (upgradePrice) {
-      upgradePrice.bonus * upgrade.count
+      amount += upgradePrice.bonus * upgrade.count
     }
   })
 
-  return amount
+  return Math.round(amount * 100) / 100
 }
 
 const defaultState = { coffeeCounter: 0, coffeeMultiplier: 2, Upgrades: [], availableUpgrades: availableUpgrades}
@@ -46,7 +51,7 @@ function coffeeShop(state = defaultState, action) {
     case CLICK_COFFEE:
       return Object.assign({}, state, { coffeeCounter: state.coffeeCounter + 1 + calculateCookieThing(state.Upgrades)})
     case INTERVAL_COFFEE:
-      return Object.assign({}, state, { coffeeCounter: state.coffeeCounter + 1 + calculateCookieThing(state.Upgrades)})
+      return Object.assign({}, state, { coffeeCounter: state.coffeeCounter + 1 / 100 + calculateCookieThing(state.Upgrades) / 100})
     default:
       return state
   }
