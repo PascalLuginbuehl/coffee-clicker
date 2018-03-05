@@ -13,6 +13,13 @@ return {
   }
 }
 
+export const BUY_UPGRADE = "BUY_UPGRADE"
+export function buyUpgrade(upgradeName) {
+  return {
+    type: BUY_UPGRADE,
+    upgradeName,
+  }
+}
 
 export function startCoffeeInterval() {
   return (dispatch) => {

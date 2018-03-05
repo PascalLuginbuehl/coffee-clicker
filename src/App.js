@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
-import { clickCoffee, intervalCoffee } from './actions'
+import { clickCoffee, intervalCoffee, buyUpgrade } from './actions'
 
 
 class App extends Component {
@@ -20,6 +20,14 @@ class App extends Component {
         <div onClick={this.props.onCoffeeClick}>
           CoffePicture
         </div>
+
+        <div>
+          <h2>buy shit</h2>
+          {this.props.availableUpgrades.map(upgrade => (<div onClick={() => this.props.onBuyCoffee(upgrade.name)} key={upgrade.name}>
+            <h3>{upgrade.name}</h3>
+            <p>Price {upgrade.price}</p>
+          </div>))}
+        </div>
       </div>
     )
   }
@@ -27,17 +35,20 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    coffeeCounter: state.coffeeShop.coffeeCounter
+    coffeeCounter: state.coffeeShop.coffeeCounter,
+    availableUpgrades: state.coffeeShop.availableUpgrades,
+    Upgrades: state.coffeeShop.Upgrades,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     onCoffeeClick: () => {
+      console.log("HI")
       dispatch(clickCoffee())
     },
-    onCoffeeInterval: () => {
-      dispatch(intervalCoffee())
+    onBuyCoffee: (upgradeName) => {
+      dispatch(buyUpgrade(upgradeName))
     }
   }
 }
