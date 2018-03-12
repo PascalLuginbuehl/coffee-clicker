@@ -20,7 +20,7 @@ class App extends Component {
           </div>
 
           <div onClick={this.props.onCoffeeClick}>
-            <img src="click-this-coffee.png" alt="Click This!"/>
+            <img class='coffee-container' src="click-this-coffee.png" alt="Click This!"/>
           </div>
           </div>
           <div class="aside">

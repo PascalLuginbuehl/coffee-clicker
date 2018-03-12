@@ -37,6 +37,16 @@ h2 {
 main {
   display: flex;
   flex-wrap: nowrap;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  .main {
+    width: 100%;
+  }
+}
+
+.coffee-container {
+  width: 350px;
 }
 
 .upgrade-container {
