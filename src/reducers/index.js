@@ -12,7 +12,7 @@ function coffeeShop(state = defaultState, action) {
       const upgrade = availableUpgrades.find(upgrade => upgrade.name === action.upgradeName)
       // Look for upgrade / upgrade exists
       if (upgrade) {
-        if (upgrade.price < state.coffeeCounter) {
+        if (upgrade.price <= state.coffeeCounter) {
           // Cloning array for consistency
           const newArray = [...state.Upgrades]
           const foundCurrentUpgrade = newArray.find(name => name.name === action.upgradeName)
@@ -30,7 +30,7 @@ function coffeeShop(state = defaultState, action) {
       }
       return state
     case CLICK_COFFEE:
-      return Object.assign({}, state, { coffeeCounter: state.coffeeCounter + 1 + calcCoffeeSpeedFromUpgrades(state.Upgrades)})
+      return Object.assign({}, state, { coffeeCounter: state.coffeeCounter + 1})
     case INTERVAL_COFFEE:
       return Object.assign({}, state, { coffeeCounter: state.coffeeCounter + calcCoffeeSpeedFromUpgrades(state.Upgrades) / 100})
     default:
