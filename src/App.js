@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
 import { clickCoffee, buyUpgrade } from './actions'
+import { calcCoffeeSpeedFromUpgrades } from './reducers/calcCoffeeSpeedFromUpgrades'
 
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
           <div>
             <h2>Counter</h2>
             <p>{Math.floor(this.props.coffeeCounter)}</p>
+              <p>U will get {calcCoffeeSpeedFromUpgrades(this.props.Upgrades)}/sec</p>
           </div>
 
           <div onClick={this.props.onCoffeeClick}>
@@ -25,6 +27,7 @@ class App extends Component {
                 <div onClick={() => this.props.onBuyCoffee(upgrade.name)} key={upgrade.name} className={upgrade.price > this.props.coffeeCounter ? "not-buyable" : null }>
                 <h3>{upgrade.name}</h3>
                   <p>Price {upgrade.price}</p>
+                  <p>Sis item will give u a boost of {upgrade.bonus}</p>
                   <p>I has {this.props.Upgrades.find(e => e.name === upgrade.name) ? this.props.Upgrades.find(e => e.name === upgrade.name).count : 0}</p>
                 </div>
               ))}
@@ -47,7 +50,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     onCoffeeClick: () => {
-      console.log("HI")
       dispatch(clickCoffee())
     },
     onBuyCoffee: (upgradeName) => {

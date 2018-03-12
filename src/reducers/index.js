@@ -1,31 +1,8 @@
 import { CLICK_COFFEE, INTERVAL_COFFEE, BUY_UPGRADE } from '../actions'
 import { combineReducers } from 'redux'
+import { calcCoffeeSpeedFromUpgrades } from './calcCoffeeSpeedFromUpgrades'
+import { availableUpgrades } from './availableUpgrades'
 
-const availableUpgrades = [
-  {
-    name: "Zucker",
-    price: 10,
-    bonus: 0.1,
-  },
-  {
-    name: "Not dicks",
-    price: 100,
-    bonus: 1,
-  }
-]
-
-const calculateCookieThing = (Upgrades) => {
-  let amount = 0
-
-  Upgrades.forEach(upgrade => {
-    const upgradePrice = availableUpgrades.find(avUpgrade => avUpgrade.name === upgrade.name)
-    if (upgradePrice) {
-      amount += upgradePrice.bonus * upgrade.count
-    }
-  })
-
-  return Math.round(amount * 100) / 100
-}
 
 const defaultState = { coffeeCounter: 0, coffeeMultiplier: 2, Upgrades: [], availableUpgrades: availableUpgrades}
 function coffeeShop(state = defaultState, action) {
@@ -53,9 +30,9 @@ function coffeeShop(state = defaultState, action) {
       }
       return state
     case CLICK_COFFEE:
-      return Object.assign({}, state, { coffeeCounter: state.coffeeCounter + 1 + calculateCookieThing(state.Upgrades)})
+      return Object.assign({}, state, { coffeeCounter: state.coffeeCounter + 1 + calcCoffeeSpeedFromUpgrades(state.Upgrades)})
     case INTERVAL_COFFEE:
-      return Object.assign({}, state, { coffeeCounter: state.coffeeCounter + calculateCookieThing(state.Upgrades) / 100})
+      return Object.assign({}, state, { coffeeCounter: state.coffeeCounter + calcCoffeeSpeedFromUpgrades(state.Upgrades) / 100})
     default:
       return state
   }
