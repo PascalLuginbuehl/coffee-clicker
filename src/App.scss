@@ -48,6 +48,10 @@ main {
     box-sizing: border-box;
     padding: 34px 45px;
     margin-bottom: 40px;
+    transition: opacity .5s;
+  }
+  .not-buyable {
+    opacity: .5;
   }
 
   * {
