@@ -29,13 +29,26 @@ h2 {
   font-size: 40pt
 }
 
-.upgrade-item {
-  background-image: url("css/upgrade-item-background.png");
-  background-size: contain;
-  height: 150px;
-  width: 600px;
-  box-sizing: border-box;
-  padding: 34px 45px;
+.aside{
+  /*position: absolute;
+  right: 0;*/
+}
+
+main {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.upgrade-container {
+  div {
+    background-image: url("css/upgrade-item-background.png");
+    background-size: contain;
+    height: 150px;
+    width: 600px;
+    box-sizing: border-box;
+    padding: 34px 45px;
+    margin-bottom: 40px;
+  }
 
   * {
     margin: 0px;
@@ -50,6 +63,7 @@ h2 {
     font-family: $secondary-font;
   }
 }
+
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
