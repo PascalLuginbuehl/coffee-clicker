@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
-import { clickCoffee, intervalCoffee, buyUpgrade } from './actions'
+import { clickCoffee, buyUpgrade } from './actions'
 
 
 class App extends Component {
-  constructor (){
-    super()
-  }
-
   render() {
     return (
       <div className="App">
@@ -24,12 +20,14 @@ class App extends Component {
           </div>
           </div>
           <div class="aside">
-            <div class='upgrade-container'>
-              {this.props.availableUpgrades.map(upgrade => (<div onClick={() => this.props.onBuyCoffee(upgrade.name)} key={upgrade.name}>
+            <div class="upgrade-container">
+              {this.props.availableUpgrades.map(upgrade => (
+                <div onClick={() => this.props.onBuyCoffee(upgrade.name)} key={upgrade.name} className={upgrade.price > this.props.coffeeCounter ? "not-buyable" : null }>
                 <h3>{upgrade.name}</h3>
-                <p>Price {upgrade.price}</p>
-                <p>I has {this.props.Upgrades.find(e => e.name === upgrade.name) ? this.props.Upgrades.find(e => e.name === upgrade.name).count : 0}</p>
-              </div>))}
+                  <p>Price {upgrade.price}</p>
+                  <p>I has {this.props.Upgrades.find(e => e.name === upgrade.name) ? this.props.Upgrades.find(e => e.name === upgrade.name).count : 0}</p>
+                </div>
+              ))}
             </div>
           </div>
         </main>
