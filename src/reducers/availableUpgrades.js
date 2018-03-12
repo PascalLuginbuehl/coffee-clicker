@@ -18,5 +18,10 @@ export const availableUpgrades = [
     name: "Starbucks",
     price: 1000,
     bonus: 10,
+  },
+  {
+    name: "IT Abteilung",
+    price: 5000,
+    bonus: 50,
   }
 ]

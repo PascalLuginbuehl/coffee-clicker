@@ -48,7 +48,9 @@ class App extends Component {
           </div>
           <div className="aside">
             <div className="upgrade-container">
-              <div onClick={this.scrollUp.bind(this)} className={1 < state.scrollPage ? null : "not-clickable"}>Öp</div>
+              <div onClick={this.scrollUp.bind(this)} className={1 < state.scrollPage ? "button-up" : "button-up not-clickable"}>
+                <img src="button-up.png" alt="Up!"/>
+              </div>
               {props.availableUpgrades.filter((e, i) => i < state.scrollPage * state.showInWindow && i >= (state.scrollPage - 1) * state.showInWindow).map(upgrade => (
                 <div onClick={() => props.onBuyCoffee(upgrade.name)} key={upgrade.name} className={upgrade.price > props.coffeeCounter ? "upgrade-item not-buyable" : "upgrade-item" }>
                   <div className="left">
@@ -61,7 +63,9 @@ class App extends Component {
                   </div>
                 </div>
               ))}
-              <div onClick={this.scrollDown.bind(this)} className={props.availableUpgrades.length > state.scrollPage * state.showInWindow ? null : "not-clickable"}>döwn</div>
+              <div onClick={this.scrollDown.bind(this)} className={props.availableUpgrades.length > state.scrollPage * state.showInWindow ? "button-down" : "button-down not-clickable"}>
+                <img src="button-down.png" alt="Down!"/>
+              </div>
             </div>
           </div>
         </main>
