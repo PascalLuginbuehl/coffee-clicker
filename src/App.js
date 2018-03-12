@@ -36,11 +36,10 @@ class App extends Component {
     return (
       <div className="App">
        <main>
-        <div className="main">
-          <div>
-            <h2>Counter</h2>
-            <p>{Math.floor(props.coffeeCounter)}</p>
-              <p>U will get {calcCoffeeSpeedFromUpgrades(props.Upgrades)}/sec</p>
+        <div class="main">
+          <div class="counter-container">
+            <h2>{Math.floor(props.coffeeCounter)}</h2>
+              <p>+{calcCoffeeSpeedFromUpgrades(props.Upgrades)} pro Sekunde</p>
           </div>
 
           <div onClick={props.onCoffeeClick}>

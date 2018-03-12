@@ -24,14 +24,23 @@ body {
   color: $default-color;
 }
 
-h2 {
+h2, h3 {
+  font-family: $default-font;
+  font-size: 40pt;
+  font-weight: normal;
+  margin: 0;
+}
+h3 {
+  font-size: 32pt;
+}
+p {
+  font-size: 17pt;
   font-family: $secondary-font;
-  font-size: 40pt
+  margin: 0;
 }
 
-.aside{
-  /*position: absolute;
-  right: 0;*/
+.counter-container{
+
 }
 
 main {
@@ -41,7 +50,14 @@ main {
   margin: 0 auto;
 
   .main {
+    text-align: center;
     width: 100%;
+  }
+
+  .aside{
+    height: 100vh;
+  display: flex;
+  align-items: center;
   }
 }
 
@@ -60,14 +76,23 @@ main {
 }
 
 .upgrade-container {
+
   .upgrade-item {
+    -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
+    cursor: pointer;
     position: relative;
     background-image: url("css/upgrade-item-background.png");
     background-size: contain;
     height: 150px;
     width: 600px;
     box-sizing: border-box;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     transition: opacity .5s;
 
     .left, .right{
@@ -83,19 +108,7 @@ main {
   }
   .not-buyable {
     opacity: .5;
-  }
-
-  * {
-    margin: 0px;
-  }
-
-  h3 {
-    font-weight: normal;
-    font-size: 32pt;
-  }
-  p {
-    font-size: 17pt;
-    font-family: $secondary-font;
+    cursor: default;
   }
 }
 
