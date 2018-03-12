@@ -18,17 +18,21 @@ class App extends Component {
           </div>
 
           <div onClick={this.props.onCoffeeClick}>
-            <img class='coffee-container' src="click-this-coffee.png" alt="Click This!"/>
+            <img class="coffee-container" src="click-this-coffee.png" alt="Click This!"/>
           </div>
           </div>
           <div class="aside">
             <div class="upgrade-container">
               {this.props.availableUpgrades.map(upgrade => (
-                <div onClick={() => this.props.onBuyCoffee(upgrade.name)} key={upgrade.name} className={upgrade.price > this.props.coffeeCounter ? "not-buyable" : null }>
-                <h3>{upgrade.name}</h3>
-                  <p>Price {upgrade.price}</p>
-                  <p>Sis item will give u a boost of {upgrade.bonus}</p>
-                  <p>I has {this.props.Upgrades.find(e => e.name === upgrade.name) ? this.props.Upgrades.find(e => e.name === upgrade.name).count : 0}</p>
+                <div onClick={() => this.props.onBuyCoffee(upgrade.name)} key={upgrade.name} className={upgrade.price > this.props.coffeeCounter ? "upgrade-item not-buyable" : "upgrade-item" }>
+                  <div class="left">
+                    <h3>{upgrade.name}</h3>
+                    <p>+{upgrade.bonus} pro Sekunde</p>
+                  </div>
+                  <div class="right">
+                    <h3>{this.props.Upgrades.find(e => e.name === upgrade.name) ? this.props.Upgrades.find(e => e.name === upgrade.name).count : 0}x</h3>
+                    <p>Preis: {upgrade.price}.-</p>
+                  </div>
                 </div>
               ))}
             </div>
