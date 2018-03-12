@@ -47,6 +47,16 @@ main {
 
 .coffee-container {
   width: 350px;
+  transition: transform .3s ease;
+  &:hover {
+    transform: scale(1.02);
+    transform-origin: center;
+  }
+  &:active {
+    transition: transform .2s cubic-bezier(0, 0.29, 0.01, 0.92);
+
+    transform: scale(.9);
+  }
 }
 
 .upgrade-container {
