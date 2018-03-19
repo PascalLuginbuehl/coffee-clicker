@@ -42,8 +42,8 @@ class App extends Component {
               <p>+{calcCoffeeSpeedFromUpgrades(props.Upgrades)} pro Sekunde</p>
           </div>
 
-          <div onClick={props.onCoffeeClick}>
-            <img className="coffee-container" src="click-this-coffee.png" alt="Click This!"/>
+          <div class="click-container">
+            <img onClick={props.onCoffeeClick} className="coffee-container" src="click-this-coffee.png" alt="Click This!"/>
           </div>
           </div>
           <div className="aside">

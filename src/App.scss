@@ -31,22 +31,33 @@ h2, h3 {
   margin: 0;
 }
 h3 {
-  font-size: 32pt;
+  font-size: 30pt;
 }
 p {
-  font-size: 17pt;
+  font-size: 16pt;
   font-family: $secondary-font;
   margin: 0;
 }
 
 .counter-container{
+  height: 145px;
+    box-sizing: border-box;
+    padding-top: 45px;
+}
 
+.click-container{
+  height: calc(100% - 145px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button-up, .button-down {
   padding: 20px;
   text-align: center;
   cursor: pointer;
+  height: 145px;
+    box-sizing: border-box;
 
   img {
     height: 100px;
@@ -54,7 +65,7 @@ p {
 }
 
 .not-clickable {
-  opacity: .5;
+  opacity: 0;
   cursor: default;
 }
 
@@ -104,14 +115,18 @@ main {
     position: relative;
     background-image: url("css/upgrade-item-background.png");
     background-size: contain;
-    height: 150px;
-    width: 600px;
+    height: 140px;
+    width: 560px;
     box-sizing: border-box;
     margin-bottom: 30px;
     transition: opacity .5s;
 
+    &:nth-child(5){
+      margin: 0;
+    }
+
     .left, .right{
-      padding: 34px 45px;
+      padding: 32px 45px;
     }
 
     .right {
