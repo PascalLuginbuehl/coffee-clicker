@@ -39,7 +39,7 @@ p {
   margin: 0;
 }
 
-.counter-container{
+.counter-container {
 
 }
 
@@ -122,6 +122,9 @@ main {
   .not-buyable {
     opacity: .5;
     cursor: default;
+    &:active {
+      transform: none;
+    }
   }
 }
 
