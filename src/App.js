@@ -52,15 +52,20 @@ class App extends Component {
                 <img src="button-up.png" alt="Up!"/>
               </div>
               {props.availableUpgrades.filter((e, i) => i < state.scrollPage * state.showInWindow && i >= (state.scrollPage - 1) * state.showInWindow).map(upgrade => (
-                <div onClick={() => props.onBuyCoffee(upgrade.name)} key={upgrade.name} className={upgrade.price > props.coffeeCounter ? "upgrade-item not-buyable" : "upgrade-item" }>
+                <div onClick={() => props.onBuyCoffee(upgrade.name)} key={upgrade.name} className={(upgrade.unlocked && upgrade.price <= props.coffeeCounter ? "" : "not-buyable") + " upgrade-item"}>
                   <div className="left">
                     <h3>{upgrade.name}</h3>
                     <p>+{upgrade.bonus} pro Sekunde</p>
                   </div>
                   <div className="right">
                     <h3>{props.Upgrades.find(e => e.name === upgrade.name) ? props.Upgrades.find(e => e.name === upgrade.name).count : 0}x</h3>
-                    <p>Preis: {upgrade.price}.-</p>
+                    <p>Preis: {upgrade.price}</p>
                   </div>
+                  {!upgrade.unlocked && upgrade.price * 2 < props.coffeeCounter ? (
+                    <div>
+                      ünlock {upgrade.price * 2}
+                    </div>
+                  ) : <div>Not ünluckable</div>}
                 </div>
               ))}
               <div onClick={this.scrollDown.bind(this)} className={props.availableUpgrades.length > state.scrollPage * state.showInWindow ? "button-down" : "button-down not-clickable"}>

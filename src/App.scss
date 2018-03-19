@@ -137,6 +137,9 @@ main {
   .not-buyable {
     opacity: .5;
     cursor: default;
+    &:active {
+      transform: none;
+    }
   }
 }
 

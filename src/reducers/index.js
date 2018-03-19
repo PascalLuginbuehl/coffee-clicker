@@ -9,20 +9,28 @@ function coffeeShop(state = defaultState, action) {
 
   switch (action.type) {
     case BUY_UPGRADE:
-      const upgrade = availableUpgrades.find(upgrade => upgrade.name === action.upgradeName)
+      let newUpgrades = JSON.parse(JSON.stringify(state.availableUpgrades))
+      const upgrade = newUpgrades.find(upgrade => upgrade.name === action.upgradeName)
       // Look for upgrade / upgrade exists
       if (upgrade) {
-        if (upgrade.price <= state.coffeeCounter) {
+        if (!upgrade.unlocked && upgrade.price * 2 <= state.coffeeCounter) {
+          upgrade.unlocked = true
+          return Object.assign({}, state, {
+            availableUpgrades: newUpgrades,
+            coffeeCounter: state.coffeeCounter - upgrade.price * 2,
+          })
+        } else if (upgrade.unlocked && upgrade.price <= state.coffeeCounter) {
           // Cloning array for consistency
           const newArray = [...state.Upgrades]
           const foundCurrentUpgrade = newArray.find(name => name.name === action.upgradeName)
-
+          upgrade.price = Math.round(1.1 * upgrade.price * 10) / 10
           if (foundCurrentUpgrade) {
             foundCurrentUpgrade.count += 1
           } else {
             newArray.push({ name: action.upgradeName, count: 1 })
           }
           return Object.assign({}, state, {
+            availableUpgrades: newUpgrades,
             coffeeCounter: state.coffeeCounter - upgrade.price,
             Upgrades: newArray,
           })
