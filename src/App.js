@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { clickCoffee, buyUpgrade } from './actions'
 import { calcCoffeeSpeedFromUpgrades } from './reducers/calcCoffeeSpeedFromUpgrades'
 
+import BubbleContainer from "./components/BubbleContainer"
 
 class App extends Component {
   constructor() {
@@ -36,15 +37,17 @@ class App extends Component {
     return (
       <div className="App">
        <main>
-        <div class="main">
-          <div class="counter-container">
+        <div className="main">
+          <div className="counter-container">
             <h2>{Math.floor(props.coffeeCounter)}</h2>
               <p>+{calcCoffeeSpeedFromUpgrades(props.Upgrades)} pro Sekunde</p>
           </div>
 
-          <div class="click-container">
-            <img onClick={props.onCoffeeClick} className="coffee-container" src="click-this-coffee.png" alt="Click This!"/>
-          </div>
+            <div className="click-container" >
+              <BubbleContainer>
+                <img onClick={props.onCoffeeClick} className="coffee-container" src="click-this-coffee.png" alt="Click This!"/>
+              </BubbleContainer>
+            </div>
           </div>
           <div className="aside">
             <div className="upgrade-container">

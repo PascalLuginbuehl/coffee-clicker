@@ -13,7 +13,7 @@ import thunkMiddleware from 'redux-thunk'
 
 const loggerMiddleware = createLogger({
   predicate: (getState, action) => {
-    if (action.type == INTERVAL_COFFEE) {
+    if (action.type === INTERVAL_COFFEE) {
       return false
     }
     return true
