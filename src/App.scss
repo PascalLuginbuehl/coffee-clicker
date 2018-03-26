@@ -72,7 +72,7 @@ p {
 main {
   display: flex;
   flex-wrap: nowrap;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
 
   .main {
@@ -82,6 +82,7 @@ main {
 
   .aside{
     height: 100vh;
+    min-width: 700px;
   display: flex;
   align-items: top;
   }
@@ -100,39 +101,85 @@ main {
   }
 }
 
+.divider{
+  font-size: 50px;
+  text-align: center;
+
+  span:before, span:after{
+    content: '';
+    display: inline-block;
+    background-size: 100%;
+    width: 160px;
+    height: 40px;
+  }
+  span:before{
+    background-image: url("css/left-thin-arrow.png");
+    margin-right: 20px;
+  }
+  span:after{
+    background-image: url("css/right-thin-arrow.png");
+    margin-left: 20px;
+  }
+}
+
 .upgrade-container {
 
-  .upgrade-item {
-  user-select: none;
-    cursor: pointer;
-    position: relative;
-    background-image: url("css/upgrade-item-background.png");
-    background-size: contain;
-    height: 140px;
-    width: 560px;
-    box-sizing: border-box;
-    margin-bottom: 30px;
-    transition: opacity .5s;
+  background-image: url("css/chalkboard.jpg");
+  background-size: cover;
 
-    &:nth-child(5){
-      margin: 0;
+  .upgrade-holder{
+    padding: 0px 30px;
+    display: flex;
+
+    .unlock-upgrade{
+      position: relative;
+      width:  100px;
+      height: 100px;
+      box-sizing: border-box;
+
+      span {
+        cursor: pointer;
+        color: #FFF;
+        position: absolute;
+        text-align: center;
+        width: 91px;
+        left: 0;
+        top: 55px;
+      }
+
+      img {
+        position: absolute;
+        cursor: pointer;
+        height: 100%;
+      }
     }
 
-    .left, .right{
-      padding: 32px 45px;
-    }
+    .upgrade-item {
+      margin-top: 10px;
+    user-select: none;
+      cursor: pointer;
+      position: relative;
+      width: 560px;
+      box-sizing: border-box;
+      transition: opacity .5s;
 
-    .right {
-      text-align: center;
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
+      &:nth-child(5){
+        margin: 0;
+      }
 
-    &:active {
-      transition: transform .2s cubic-bezier(0, 0.29, 0.01, 0.92);
-      transform: scale(.96);
-    }
+      .right {
+        text-align: right;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      &:active {
+        transition: transform .2s cubic-bezier(0, 0.29, 0.01, 0.92);
+        transform: scale(.96);
+      }
+
+  }
   }
   .not-buyable {
     opacity: .5;
