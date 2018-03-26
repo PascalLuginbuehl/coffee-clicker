@@ -20,13 +20,16 @@ const loggerMiddleware = createLogger({
   }
 })
 
+/* eslint-disable no-underscore-dangle */
 const store = createStore(
   coffeeApp,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(
     thunkMiddleware,
     loggerMiddleware,
   ),
 )
+/* eslint-enable */
 
 
 ReactDOM.render((
