@@ -54,7 +54,9 @@ class App extends Component {
               <div onClick={this.scrollUp.bind(this)} className={1 < state.scrollPage ? "button-up" : "button-up not-clickable"}>
                 <img src="button-up.png" alt="Up!"/>
               </div>
+              <div className="divider"><span>Upgrades</span></div>
               {props.availableUpgrades.filter((e, i) => i < state.scrollPage * state.showInWindow && i >= (state.scrollPage - 1) * state.showInWindow).map(upgrade => (
+                <div className="upgrade-holder">
                 <div onClick={() => props.onBuyCoffee(upgrade.name)} key={upgrade.name} className={(upgrade.unlocked && upgrade.price <= props.coffeeCounter ? "" : "not-buyable") + " upgrade-item"}>
                   <div className="left">
                     <h3>{upgrade.name}</h3>
@@ -64,11 +66,15 @@ class App extends Component {
                     <h3>{props.Upgrades.find(e => e.name === upgrade.name) ? props.Upgrades.find(e => e.name === upgrade.name).count : 0}x</h3>
                     <p>Preis: {upgrade.price}</p>
                   </div>
-                  {!upgrade.unlocked && upgrade.price * 2 < props.coffeeCounter ? (
-                    <div>
-                      ünlock {upgrade.price * 2}
+                </div>
+                {!upgrade.unlocked ? (
+                  upgrade.price * 2 < props.coffeeCounter ? (
+                    <div className="unlock-upgrade">
+                      <img src="lock.png" alt="Unlock This!"/>
+                      <span>{upgrade.price * 2}</span>
                     </div>
-                  ) : <div>Not ünluckable</div>}
+                  ) : <div className="unlock-upgrade"><img src="lock.png" alt="Unlock This!"/><span>{upgrade.price * 2}</span></div>
+                ) : null }
                 </div>
               ))}
               <div onClick={this.scrollDown.bind(this)} className={props.availableUpgrades.length > state.scrollPage * state.showInWindow ? "button-down" : "button-down not-clickable"}>
