@@ -54,7 +54,6 @@ class App extends Component {
               <div onClick={this.scrollUp.bind(this)} className={1 < state.scrollPage ? "button-up" : "button-up not-clickable"}>
                 <img src="button-up.png" alt="Up!"/>
               </div>
-              <div className="divider"><span>Upgrades</span></div>
               {props.availableUpgrades.filter((e, i) => i < state.scrollPage * state.showInWindow && i >= (state.scrollPage - 1) * state.showInWindow).map(upgrade => (
                 <div className="upgrade-holder">
                 <div onClick={() => props.onBuyCoffee(upgrade.name)} key={upgrade.name} className={(upgrade.unlocked && upgrade.price <= props.coffeeCounter ? "" : "not-buyable") + " upgrade-item"}>
