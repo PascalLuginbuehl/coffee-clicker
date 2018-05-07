@@ -8,12 +8,12 @@ import { createStore, applyMiddleware } from 'redux'
 import { coffeeApp } from './reducers'
 // import { fetchTodos } from './actions'
 import { createLogger } from 'redux-logger'
-import { startCoffeeInterval, INTERVAL_COFFEE } from './actions'
+import { startCoffeeInterval, INTERVAL_COFFEE, CLICK_COFFEE } from './actions'
 import thunkMiddleware from 'redux-thunk'
 
 const loggerMiddleware = createLogger({
   predicate: (getState, action) => {
-    if (action.type === INTERVAL_COFFEE) {
+    if (action.type === INTERVAL_COFFEE || action.type === CLICK_COFFEE) {
       return false
     }
     return true
